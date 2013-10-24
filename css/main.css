@@ -1,0 +1,306 @@
+*{
+	margin: 0;
+	padding: 0;
+	color: #fff;
+}
+body{
+	width: 100%;
+	height: 100%;
+	background: url('../images/bg.jpg') 100% 100%;
+	z-index: -1;
+	position: absolute;
+	overflow: hidden;
+}
+#container{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.main{
+	position: absolute;
+	width: 45%;
+	height: 70%;
+	left:27%;
+	top:15%;
+	background: url('../images/main.png') 0 0 no-repeat;
+	background-size: 100% 100%;
+		transition: all 0.4s linear;
+	-moz-transition: all 0.4s linear;
+	-webkit-transition: all 0.4s linear;
+	z-index: 1000;
+}
+#top-left{
+	position: absolute;
+	width: 31%;
+	height: 50%;
+	left:6.5%;
+	top: 2%;
+	background: url('../images/1.png') 0 0 no-repeat;
+	background-size: 100% 100%;
+	z-index: 1;
+	-webkit-mask-image: -webkit-gradient(linear, left 20%, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+#top-left:before{
+	background: url('../images/1.png') 0 0 no-repeat;
+	background-size: 100% 100%;
+	content:"";
+   position:absolute;
+   top:0;
+   bottom:0;
+   left:10px;
+   right:0;
+	z-index: -1;
+}
+#top{
+	position: absolute;
+	width: 25%;
+	height: 17%;
+	left:37%;
+	top:0%;
+	background: url('../images/2.png') 0 0 no-repeat;
+	background-size: 100% 100%;
+	-webkit-mask-image: -webkit-gradient(linear, left 100%, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+#top-right{
+	position: absolute;
+	width: 34%;
+	height: 50%;
+	left:60.5%;
+	top: 1.7%;
+	background: url('../images/3.png') 0 0 no-repeat;
+	background-size: 100% 100%;
+	-webkit-mask-image: -webkit-gradient(linear, right 20%, right top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+#bottom-left{
+	position: absolute;
+	width: 35%;
+	height: 52%;
+	left:3.7%;
+	top: 49%;
+	background: url('../images/4.png') 0 0 no-repeat;
+	background-size: 100% 100%;
+	-webkit-mask-image: -webkit-gradient(linear, left 100%, left top, from(rgba(0,0,0,0)), to(rgba(0,0,0,1)));
+}
+#bottom{
+	position: absolute;
+	width: 27%;
+	height: 17%;
+	left:36%;
+	top: 85%;
+	background: url('../images/5.png') 0 0 no-repeat;
+	background-size: 100% 100%;
+	-webkit-mask-image: -webkit-gradient(linear, left 60%, left top, from(rgba(0,0,0,0)), to(rgba(0,0,0,1)));
+}
+#bottom-right{
+	position: absolute;
+	width: 35%;
+	height: 52%;
+	left:60.3%;
+	top: 50%;
+	background: url('../images/6.png') 0 0 no-repeat;
+	background-size: 100% 100%;
+	-webkit-mask-image: -webkit-gradient(linear, right 100%, right top, from(rgba(0,0,0,0)), to(rgba(0,0,0,1)));
+}
+#top-left:hover{
+	-webkit-mask-image: -webkit-gradient(linear, right 100%, right top, from(rgba(0,0,0,1)), to(rgba(0,0,0,1)));
+}
+#top-right:hover{
+	-webkit-mask-image: -webkit-gradient(linear, right 100%, right top, from(rgba(0,0,0,1)), to(rgba(0,0,0,1)));
+}
+#bottom-left:hover{
+	-webkit-mask-image: -webkit-gradient(linear, right 100%, right top, from(rgba(0,0,0,1)), to(rgba(0,0,0,1)));
+}
+#bottom-right:hover{
+	-webkit-mask-image: -webkit-gradient(linear, right 100%, right top, from(rgba(0,0,0,1)), to(rgba(0,0,0,1)));
+}
+.menu-item{
+	position: relative;
+		transition: all 0.4s linear;
+	-moz-transition: all 0.4s linear;
+	-webkit-transition: all 0.4s linear;
+	z-index: 5;
+	opacity: 0.2;
+
+}
+#pragyanlogo{
+	position: absolute;
+	background:url('../images/logo.png') 0 0 no-repeat;
+	background-size: 100% 100%;
+	width: 12%;
+	height: 8%;
+	top:15%;
+	left: 11%;
+	z-index: 1;
+	opacity: 0.8;
+}
+.content{
+	width: 100%;
+	height: 100%;
+	display: none;
+	position: absolute;
+	padding-top: 100px;
+	background: #6c6;
+}
+#pragyangif{
+	width: 25%;
+height: 80%;
+position: relative;
+background: url('../images/logo.gif') 0 0 no-repeat;
+background-size: 100% 100%;
+top: -10%;
+left: 0%;
+animation: logoeffect1 6s infinite linear;
+-moz-animation: logoeffect1 6s infinite linear;
+-webkit-animation: logoeffect1 6s infinite linear;
+z-index: 1000000000;
+perspective: 500;
+}
+@keyframes logoeffect1 {  
+ 0% {
+   transform: rotateY(0deg);
+  }
+  30%{
+  	transform: rotateY(-120deg);
+  }
+  50%{
+  	transform: rotateY(-180deg);	
+  }
+  80%{
+  	transform: rotateY(-300deg);	
+  }
+  100% {
+    transform: rotateY(-360deg);
+  }
+}
+
+@-moz-keyframes logoeffect1 {  
+ 0% {
+   -moz-transform: rotateY(0deg);
+  }
+  30%{
+  	-moz-transform: rotateY(-120deg);
+  }
+  50%{
+  	-moz-transform: rotateY(-180deg);	
+  }
+  80%{
+  	-moz-transform: rotateY(-300deg);	
+  }
+  100% {
+    -moz-transform: rotateY(-360deg);
+  }
+}
+
+@-webkit-keyframes logoeffect1 {  
+  0% {
+   -webkit-transform: rotateY(0deg);
+  }
+  30%{
+  	-webkit-transform: rotateY(-120deg);
+  }
+  50%{
+  	-webkit-transform: rotateY(-180deg);	
+  }
+  80%{
+  	-webkit-transform: rotateY(-300deg);	
+  }
+  100% {
+    -webkit-transform: rotateY(-360deg);
+  }
+}
+@keyframes imeffect {  
+ 0% {
+   left:20px;
+  }
+  33%{
+  	left:0px;
+  }
+  66%{
+  	left:-10px;
+  }
+  100%{
+  	left:0px;
+  }
+}
+
+@-moz-keyframes imeffect {  
+ 0% {
+   left:20px;
+  }
+  33%{
+  	left:0px;
+  }
+  66%{
+  	left:-10px;
+  }
+  100%{
+  	left:0px;
+  }
+}
+
+@-webkit-keyframes imeffect {  
+  0% {
+   left:20px;
+  }
+  33%{
+  	left:0px;
+  }
+  66%{
+  	left:-10px;
+  }
+  100%{
+  	left:0px;
+  }
+}
+#hex1 {
+	position: absolute;
+	
+	
+	width: 65%;
+    height: 65%;
+    left: 17.5%;
+    top: 17.5%;
+    overflow: hidden;
+    -webkit-transform: rotate(120deg);
+       -moz-transform: rotate(120deg);
+         -o-transform: rotate(120deg);
+            transform: rotate(120deg);
+
+
+    }
+#hex2 {
+	position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: rotate(-60deg);
+       -moz-transform: rotate(-60deg);
+         -o-transform: rotate(-60deg);
+            transform: rotate(-60deg);
+
+    }
+#hexbody {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    visibility: visible;
+    -webkit-transform: rotate(-60deg);
+       -moz-transform: rotate(-60deg);
+         -o-transform: rotate(-60deg);
+            transform: rotate(-60deg);
+
+    }
+#mosaic{
+	width: 100%;
+    height: 100%;
+	
+
+}
+#mosaic span.hover
+{
+	float: left;
+	background-image: url('hexline.png');
+	background-size: 60%;
+
+}

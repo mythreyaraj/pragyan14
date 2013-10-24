@@ -1,0 +1,197 @@
+<html>
+
+<head>
+	<script src="jquery.js"></script>
+<style>
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	background-image: url('bg.jpg');
+	background-size: 100% 100%;
+}
+
+#hex1 {
+	position: absolute;
+	top: 200px;
+	left: 400px;
+	width: 600px;
+    height: 300px;
+    overflow: hidden;
+    -webkit-transform: rotate(120deg);
+       -moz-transform: rotate(120deg);
+         -o-transform: rotate(120deg);
+            transform: rotate(120deg);
+    cursor: pointer;
+    }
+#hex2 {
+	position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: rotate(-60deg);
+       -moz-transform: rotate(-60deg);
+         -o-transform: rotate(-60deg);
+            transform: rotate(-60deg);
+    }
+#hexbody {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: url('span1img1.jpg');
+    background-size: 340 330;
+    background-position: 50%;
+    overflow: hidden;
+    visibility: visible;
+    -webkit-transform: rotate(-60deg);
+       -moz-transform: rotate(-60deg);
+         -o-transform: rotate(-60deg);
+            transform: rotate(-60deg);
+    }
+
+#hexbody img{
+	min-height: 200px;
+	min-width: 240px;
+}
+#mosaic{
+	width: 100%;
+    height: 100%;
+	
+
+}
+#mosaic span.hover
+{
+	float: left;
+	background-image: url('hexline.png');
+	background-size: 60%;
+
+}
+#testing{
+	position: absolute;
+	width: 600px;
+	height: 300px;
+	background-color: red;
+}
+#testing2{
+	position: absolute;
+	width: 600px;
+	height: 300px;
+	background-color: green;
+}
+</style>
+</head>
+
+
+<body>
+
+<div id="hex1">
+	<div id="hex2">
+		<div id="hexbody">
+			<center><div id="destroyDiv"></div></center>
+
+			<center><div id="mosaic"></div></center>
+		</div>
+	</div>
+</div>
+
+<div id="testing">Thats right nigga!</div>
+<div id="testing2">Thats right nigga!</div>
+
+<script>
+
+
+var Hexagon  = function(){
+	
+	return{
+		width: 400,
+		height: 300,
+		hr_pieces : 8,
+		vr_pieces : 6,
+		count : 0,
+		elements : [],
+		el: undefined,
+		tot_pieces: 0,
+		box_width: 0,
+		box_height: 0,
+		intervalTimer: undefined,
+		queue: [],
+
+		init: function(jelem){
+			this.el = jelem;
+			this.width = this.el.width();
+			this.height = this.el.height();
+			this.hr_pieces = 8;
+			this.vr_pieces = 6;
+			this.tot_pieces = this.hr_pieces * this.vr_pieces;
+			this.box_width = this.width / this.hr_pieces;
+			this.box_height = this.height / this.vr_pieces;
+			this._initHex();
+		},
+
+		_initHex: function(){
+			var vr_pos = 0;
+			for (i=0; i<this.tot_pieces; i++){
+				var tempEl = $('<span class="hover" id="hover-' + i + '"></span>');
+				var hr_pos = (i % this.hr_pieces) * this.box_width;
+				if(i > 0 && i % this.hr_pieces == 0)
+					vr_pos += this.box_height;
+				tempEl.css('background-position', '-' + hr_pos + 'px -' + vr_pos + 'px');
+				this.el.append(tempEl);
+				this.elements.push(tempEl);
+			}
+			
+			$(this.el).children('.hover')
+			.width(this.box_width)
+			.height(this.box_height);
+		},
+
+		startHex: function(loop){
+			this._shuffleArray();
+			this.intervalTimer = setInterval(function(){ this._toggleHexes(loop); }.bind(this) , 10);
+		},
+
+		_shuffleArray: function(){
+			for (var i = this.elements.length - 1; i > 0; i--) {
+		        var j = Math.floor(Math.random() * (i + 1));
+		        var temp = this.elements[i];
+		        this.elements[i] = this.elements[j];
+		        this.elements[j] = temp;
+	    	}
+		},
+
+		_toggleHexes: function(loop){
+			console.log(loop)
+			var tempEl = this.elements[this.count];
+			var opacity = tempEl.css('opacity');
+			(opacity == 0)? tempEl.animate({ opacity: 1 }) : tempEl.animate({ opacity: 0 });
+			this.count = (this.count + 1) % this.tot_pieces;
+			if(this.count == 0 && loop != true)
+				clearInterval(this.intervalTimer);
+				return;
+
+		},
+		moveDivIn: function(jdiv){
+			$(this.el).parents("#hexbody").append(jdiv);
+			jdiv = jdiv.wrap("<center></center>");
+			jdiv.css("top","400px");
+			jdiv.show();
+			jdiv.animate({
+				top:"0px"
+			},"4000","swing");
+		}
+	}
+};
+
+var centerHex = new Hexagon();
+centerHex.init($("#mosaic"))
+centerHex.startHex(true);
+centerHex.moveDivIn($('#testing'));
+
+</script>
+</body>
+
+</html>
